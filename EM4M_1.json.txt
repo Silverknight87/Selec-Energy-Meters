@@ -1,0 +1,550 @@
+[
+    {
+        "id": "463b5295a473e926",
+        "type": "group",
+        "z": "9e45f8f5521cabe3",
+        "name": "Selec GRID EM4M",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "f0888d4c2fd22c9a",
+            "52625ac474c835c5",
+            "98fc909ae9784760",
+            "a1875f244a7d12b9",
+            "750f908c60b452d0",
+            "e6090a192025840e",
+            "3bfc1da1f161b6d8",
+            "23628162d4815651",
+            "c8e5015f714563b0",
+            "6e667d25122707d8",
+            "a7528fa295213e63",
+            "bfb6e3ee4aa8ac59",
+            "5525a89389fa2195",
+            "d6561aedb830fd89",
+            "60bf44db74f3f710",
+            "1eff45b602062162",
+            "afc80e52a5f9d7d8",
+            "302f528c6d9903a2",
+            "aceeec27be905f3c",
+            "15c275bb7966d431",
+            "21417d1ca8571ab2",
+            "6c1562ca33991b76"
+        ],
+        "x": 74,
+        "y": 19,
+        "w": 1112,
+        "h": 942
+    },
+    {
+        "id": "f0888d4c2fd22c9a",
+        "type": "modbus-flex-getter",
+        "z": "9e45f8f5521cabe3",
+        "g": "463b5295a473e926",
+        "name": "",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "logIOActivities": false,
+        "server": "dfba0e011b69d5c7",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 430,
+        "y": 400,
+        "wires": [
+            [
+                "52625ac474c835c5",
+                "98fc909ae9784760",
+                "a1875f244a7d12b9",
+                "750f908c60b452d0",
+                "e6090a192025840e",
+                "3bfc1da1f161b6d8",
+                "23628162d4815651",
+                "c8e5015f714563b0",
+                "6e667d25122707d8",
+                "a7528fa295213e63",
+                "bfb6e3ee4aa8ac59",
+                "5525a89389fa2195",
+                "d6561aedb830fd89",
+                "60bf44db74f3f710",
+                "1eff45b602062162"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "52625ac474c835c5",
+        "type": "function",
+        "z": "9e45f8f5521cabe3",
+        "g": "463b5295a473e926",
+        "name": "Voltage1",
+        "func": "var rawData = new ArrayBuffer(4);\nvar intView = new Uint16Array(rawData);\nvar fltView = new Float32Array(rawData);\n\nintView[0] = msg.payload[1];\n\n//low\nintView[1] = msg.payload[0];\n\n//high\n\nmsg.payload = parseFloat(fltView[0].toFixed(1));\n\nmsg.topic = \"voltage1\"\n\n// node.status({fill:\"blue\",shape:\"ring\",text:msg.topic + \":\" + msg.payload});    \n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 60,
+        "wires": [
+            [
+                "302f528c6d9903a2"
+            ]
+        ]
+    },
+    {
+        "id": "98fc909ae9784760",
+        "type": "function",
+        "z": "9e45f8f5521cabe3",
+        "g": "463b5295a473e926",
+        "name": "Voltage2",
+        "func": "var rawData = new ArrayBuffer(4);\nvar intView = new Uint16Array(rawData);\nvar fltView = new Float32Array(rawData);\n\nintView[0] = msg.payload[3];\n\n//low\nintView[1] = msg.payload[2];\n\n//high\n\nmsg.payload = parseFloat(fltView[0].toFixed(1));\n\nmsg.topic = \"voltage2\"\n\n\n//node.status({fill:\"blue\",shape:\"ring\",text:msg.topic + \":\" + msg.payload});    \n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 120,
+        "wires": [
+            [
+                "302f528c6d9903a2"
+            ]
+        ]
+    },
+    {
+        "id": "a1875f244a7d12b9",
+        "type": "function",
+        "z": "9e45f8f5521cabe3",
+        "g": "463b5295a473e926",
+        "name": "Voltage3",
+        "func": "var rawData = new ArrayBuffer(4);\nvar intView = new Uint16Array(rawData);\nvar fltView = new Float32Array(rawData);\n\nintView[0] = msg.payload[5];\n\n//low\nintView[1] = msg.payload[4];\n\n//high\n\nmsg.payload = parseFloat(fltView[0].toFixed(1));\n\nmsg.topic = \"voltage3\"\n\n\n//node.status({fill:\"blue\",shape:\"ring\",text:msg.topic + \":\" + msg.payload});    \n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 180,
+        "wires": [
+            [
+                "302f528c6d9903a2"
+            ]
+        ]
+    },
+    {
+        "id": "750f908c60b452d0",
+        "type": "function",
+        "z": "9e45f8f5521cabe3",
+        "g": "463b5295a473e926",
+        "name": "Current1",
+        "func": "var rawData = new ArrayBuffer(4);\nvar intView = new Uint16Array(rawData);\nvar fltView = new Float32Array(rawData);\n\nintView[0] = msg.payload[17];\n\n//low\nintView[1] = msg.payload[16];\n\n//high\n\nmsg.payload = parseFloat(fltView[0].toFixed(1));\n\nmsg.topic = \"current1\"\n\n\n//node.status({fill:\"blue\",shape:\"ring\",text:msg.topic + \":\" + msg.payload});    \n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 240,
+        "wires": [
+            [
+                "302f528c6d9903a2"
+            ]
+        ]
+    },
+    {
+        "id": "e6090a192025840e",
+        "type": "function",
+        "z": "9e45f8f5521cabe3",
+        "g": "463b5295a473e926",
+        "name": "Current2",
+        "func": "var rawData = new ArrayBuffer(4);\nvar intView = new Uint16Array(rawData);\nvar fltView = new Float32Array(rawData);\n\nintView[0] = msg.payload[19];\n\n//low\nintView[1] = msg.payload[18];\n\n//high\n\nmsg.payload = parseFloat(fltView[0].toFixed(1));\n\nmsg.topic = \"current2\"\n\n\n//node.status({fill:\"blue\",shape:\"ring\",text:msg.topic + \":\" + msg.payload});    \n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 300,
+        "wires": [
+            [
+                "302f528c6d9903a2"
+            ]
+        ]
+    },
+    {
+        "id": "3bfc1da1f161b6d8",
+        "type": "function",
+        "z": "9e45f8f5521cabe3",
+        "g": "463b5295a473e926",
+        "name": "Current3",
+        "func": "var rawData = new ArrayBuffer(4);\nvar intView = new Uint16Array(rawData);\nvar fltView = new Float32Array(rawData);\n\nintView[0] = msg.payload[21];\n\n//low\nintView[1] = msg.payload[20];\n\n//high\n\nmsg.payload = parseFloat(fltView[0].toFixed(1));\n\nmsg.topic = \"current3\"\n\n\n//node.status({fill:\"blue\",shape:\"ring\",text:msg.topic + \":\" + msg.payload});    \n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 360,
+        "wires": [
+            [
+                "302f528c6d9903a2"
+            ]
+        ]
+    },
+    {
+        "id": "23628162d4815651",
+        "type": "function",
+        "z": "9e45f8f5521cabe3",
+        "g": "463b5295a473e926",
+        "name": "Watts1",
+        "func": "var rawData = new ArrayBuffer(4);\nvar intView = new Uint16Array(rawData);\nvar fltView = new Float32Array(rawData);\n\nintView[0] = msg.payload[25];\n\n//low\nintView[1] = msg.payload[24];\n\n//high\nparseFloat((fltView[0] * 1000).toFixed(2));\n\nmsg.payload = parseFloat((fltView[0] * 1000).toFixed(2));\n\nmsg.topic = \"Watts1\"\n\n\n//node.status({fill:\"blue\",shape:\"ring\",text:msg.topic + \":\" + msg.payload});    \n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 440,
+        "wires": [
+            [
+                "302f528c6d9903a2"
+            ]
+        ]
+    },
+    {
+        "id": "c8e5015f714563b0",
+        "type": "function",
+        "z": "9e45f8f5521cabe3",
+        "g": "463b5295a473e926",
+        "name": "Watts2",
+        "func": "var rawData = new ArrayBuffer(4);\nvar intView = new Uint16Array(rawData);\nvar fltView = new Float32Array(rawData);\n\nintView[0] = msg.payload[27];\n\n//low\nintView[1] = msg.payload[26];\n\n//high\n\nmsg.payload = parseFloat((fltView[0] * 1000).toFixed(2));\n\nmsg.topic = \"Watts2\"\n\n\n//node.status({fill:\"blue\",shape:\"ring\",text:msg.topic + \":\" + msg.payload});    \n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 500,
+        "wires": [
+            [
+                "302f528c6d9903a2"
+            ]
+        ]
+    },
+    {
+        "id": "6e667d25122707d8",
+        "type": "function",
+        "z": "9e45f8f5521cabe3",
+        "g": "463b5295a473e926",
+        "name": "Watts3",
+        "func": "var rawData = new ArrayBuffer(4);\nvar intView = new Uint16Array(rawData);\nvar fltView = new Float32Array(rawData);\n\nintView[0] = msg.payload[29];\n\n//low\nintView[1] = msg.payload[28];\n\n//high\n\nmsg.payload =  parseFloat((fltView[0] * 1000).toFixed(2));\n\nmsg.topic = \"Watts3\"\n\n\n//node.status({fill:\"blue\",shape:\"ring\",text:msg.topic + \":\" + msg.payload});    \n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 560,
+        "wires": [
+            [
+                "302f528c6d9903a2"
+            ]
+        ]
+    },
+    {
+        "id": "a7528fa295213e63",
+        "type": "function",
+        "z": "9e45f8f5521cabe3",
+        "g": "463b5295a473e926",
+        "name": "Total KW",
+        "func": "var rawData = new ArrayBuffer(4);\nvar intView = new Uint16Array(rawData);\nvar fltView = new Float32Array(rawData);\n\nintView[0] = msg.payload[43];\n\n//low\nintView[1] = msg.payload[42];\n\n//high\n\nmsg.payload = parseFloat((fltView[0] * 1000).toFixed(2));\n\nmsg.topic = \"TotalWatts\"\n\n\n\n//node.status({fill:\"blue\",shape:\"ring\",text:msg.topic + \":\" + msg.payload});    \n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 620,
+        "wires": [
+            [
+                "302f528c6d9903a2"
+            ]
+        ]
+    },
+    {
+        "id": "bfb6e3ee4aa8ac59",
+        "type": "function",
+        "z": "9e45f8f5521cabe3",
+        "g": "463b5295a473e926",
+        "name": "Total net KWH",
+        "func": "var rawData = new ArrayBuffer(4);\nvar intView = new Uint16Array(rawData);\nvar fltView = new Float32Array(rawData);\n\nintView[0] = msg.payload[59];\n\n//low\nintView[1] = msg.payload[58];\n\n//high\n\nmsg.payload = parseFloat(fltView[0].toFixed(1));\n\nmsg.topic = \"TotalNetkWh\"\n\n//node.status({fill:\"blue\",shape:\"ring\",text:msg.topic + \":\" + msg.payload});    \n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 680,
+        "wires": [
+            [
+                "302f528c6d9903a2"
+            ]
+        ]
+    },
+    {
+        "id": "5525a89389fa2195",
+        "type": "function",
+        "z": "9e45f8f5521cabe3",
+        "g": "463b5295a473e926",
+        "name": "Max demand",
+        "func": "var rawData = new ArrayBuffer(4);\nvar intView = new Uint16Array(rawData);\nvar fltView = new Float32Array(rawData);\n\nintView[0] = msg.payload[71];\n\n//low\nintView[1] = msg.payload[70];\n\n//high\n\nmsg.payload = parseFloat(fltView[0].toFixed(1));\n\nmsg.topic = \"MaxDMD\"\n\n\n//node.status({fill:\"blue\",shape:\"ring\",text:msg.topic + \":\" + msg.payload});    \n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 740,
+        "wires": [
+            [
+                "302f528c6d9903a2",
+                "aceeec27be905f3c"
+            ]
+        ]
+    },
+    {
+        "id": "d6561aedb830fd89",
+        "type": "function",
+        "z": "9e45f8f5521cabe3",
+        "g": "463b5295a473e926",
+        "name": "Total KWH - Import",
+        "func": "var rawData = new ArrayBuffer(4);\nvar intView = new Uint16Array(rawData);\nvar fltView = new Float32Array(rawData);\n\nintView[0] = msg.payload[89];\n\n//low\nintView[1] = msg.payload[88];\n\n//high\n\nmsg.payload = parseFloat(fltView[0].toFixed(1)) + 2133; // l&t meter vs selec meter offset\n\nmsg.topic = \"TotalkWhImport\"\n\n\n//node.status({fill:\"blue\",shape:\"ring\",text:msg.topic + \":\" + msg.payload});    \n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 800,
+        "wires": [
+            [
+                "302f528c6d9903a2"
+            ]
+        ]
+    },
+    {
+        "id": "60bf44db74f3f710",
+        "type": "function",
+        "z": "9e45f8f5521cabe3",
+        "g": "463b5295a473e926",
+        "name": "Total KWH - Export",
+        "func": "var rawData = new ArrayBuffer(4);\nvar intView = new Uint16Array(rawData);\nvar fltView = new Float32Array(rawData);\n\nintView[0] = msg.payload[91];\n\n//low\nintView[1] = msg.payload[90];\n\n//high\n\nmsg.payload = parseFloat(fltView[0].toFixed(1)) + 3254.5;  // l&t meter vs selec meter offset;\n\nmsg.topic = \"TotalkWhExport\"\n\n\n//node.status({fill:\"blue\",shape:\"ring\",text:msg.topic + \":\" + msg.payload});    \n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 860,
+        "wires": [
+            [
+                "302f528c6d9903a2"
+            ]
+        ]
+    },
+    {
+        "id": "1eff45b602062162",
+        "type": "function",
+        "z": "9e45f8f5521cabe3",
+        "g": "463b5295a473e926",
+        "name": "Frequency",
+        "func": "var rawData = new ArrayBuffer(4);\nvar intView = new Uint16Array(rawData);\nvar fltView = new Float32Array(rawData);\n\nintView[0] = msg.payload[57];\n\n//low\nintView[1] = msg.payload[56];\n\n//high\n\nmsg.payload = parseFloat(fltView[0].toFixed(1));\n\nmsg.topic = \"frequency\"\n\n\n//node.status({fill:\"blue\",shape:\"ring\",text:msg.topic + \":\" + msg.payload});    \n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 920,
+        "wires": [
+            [
+                "302f528c6d9903a2"
+            ]
+        ]
+    },
+    {
+        "id": "afc80e52a5f9d7d8",
+        "type": "debug",
+        "z": "9e45f8f5521cabe3",
+        "g": "463b5295a473e926",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1050,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "302f528c6d9903a2",
+        "type": "function",
+        "z": "9e45f8f5521cabe3",
+        "g": "463b5295a473e926",
+        "name": "Build object",
+        "func": "watch_topic = \"TotalNetkWh\";\nvar output = {};\n\ncontext.set(msg.topic,msg.payload);\n\nif (context.get(\"voltage1\")!==undefined) {\n    output.voltage1 = context.get(\"voltage1\");\n}\nif (context.get(\"voltage2\")!==undefined) {\n    output.voltage2 = context.get(\"voltage2\");\n}\nif (context.get(\"voltage3\")!==undefined) {\n    output.voltage3 = context.get(\"voltage3\");\n}\n\nif (context.get(\"current1\")!==undefined) {\n    output.current1 = context.get(\"current1\");\n}\nif (context.get(\"current2\")!==undefined) {\n    output.current2 = context.get(\"current2\");\n}\nif (context.get(\"current3\")!==undefined) {\n    output.current3 = context.get(\"current3\");\n}\n\nif (context.get(\"Watts1\")!==undefined) {\n    output.KW1 = context.get(\"Watts1\");\n}\n\nif (context.get(\"Watts2\")!==undefined) {\n    output.KW2 = context.get(\"Watts2\");\n}\nif (context.get(\"Watts3\")!==undefined) {\n    output.KW3 = context.get(\"Watts3\");\n}\nif (context.get(\"TotalWatts\")!==undefined) {\n    output.TotalkW = context.get(\"TotalWatts\");\n}\n\n\nif (context.get(\"frequency\")!==undefined) {\n    output.frequency = context.get(\"frequency\");\n}\n\n\nif (context.get(\"TotalNetkWh\")!==undefined) {\n    output.TotalNetkWh = context.get(\"TotalNetkWh\");\n}\n\nif (context.get(\"MaxDMD\")!==undefined) {\n    output.MaxDMD = context.get(\"MaxDMD\");\n}\n\nif (context.get(\"TotalkWhImport\")!==undefined) {\n    output.TotalkWhImport = context.get(\"TotalkWhImport\");\n}\n\nif (context.get(\"TotalkWhExport\")!==undefined) {\n    output.TotalkWhExport = context.get(\"TotalkWhExport\");\n}\n\nmsg.payload = output;\n\nif (msg.topic===watch_topic) {\n    msg.topic = \"SelecEM4MGRID\";\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 380,
+        "wires": [
+            [
+                "afc80e52a5f9d7d8",
+                "15c275bb7966d431"
+            ]
+        ]
+    },
+    {
+        "id": "aceeec27be905f3c",
+        "type": "debug",
+        "z": "9e45f8f5521cabe3",
+        "g": "463b5295a473e926",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "15c275bb7966d431",
+        "type": "mqtt out",
+        "z": "9e45f8f5521cabe3",
+        "g": "463b5295a473e926",
+        "name": "selec HA10 MQTT",
+        "topic": "pi/selec",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "3c82dcf94414b0be",
+        "x": 1070,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "21417d1ca8571ab2",
+        "type": "inject",
+        "z": "9e45f8f5521cabe3",
+        "g": "463b5295a473e926",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "15",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "5",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 280,
+        "wires": [
+            [
+                "6c1562ca33991b76"
+            ]
+        ]
+    },
+    {
+        "id": "6c1562ca33991b76",
+        "type": "function",
+        "z": "9e45f8f5521cabe3",
+        "g": "463b5295a473e926",
+        "name": "",
+        "func": "msg.payload = { value: msg.payload, 'fc': 4, 'unitid': 1, 'address': 0, 'quantity': 95 };\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 300,
+        "wires": [
+            [
+                "f0888d4c2fd22c9a"
+            ]
+        ]
+    },
+    {
+        "id": "dfba0e011b69d5c7",
+        "type": "modbus-client",
+        "name": "USB0",
+        "clienttype": "serial",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB0",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": "9600",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": 1,
+        "commandDelay": 1,
+        "clientTimeout": 1000,
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": 2000,
+        "parallelUnitIdsAllowed": false
+    },
+    {
+        "id": "3c82dcf94414b0be",
+        "type": "mqtt-broker",
+        "name": "mqtt.home",
+        "broker": "mqtt.home",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    }
+]
