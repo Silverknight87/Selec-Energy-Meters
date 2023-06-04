@@ -31,3 +31,4 @@ EM4M-Load - 3
   
  Baud rate should match the baud rate, stop bits and parity configured on the energy meters.
  
+Windows software like Modscan can be used to verify modbus functionality first on windows pc's for troubleshooting.
