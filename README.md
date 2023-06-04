@@ -1,5 +1,5 @@
 # Selec-Energy-Meters
-Documentation for Selec Energy Meters
+**Documentation for Selec Energy Meters**
 
 The repo contains User manuals for the EM4M and EM2M meters. These can also be found on the Selec website.
 
@@ -11,7 +11,8 @@ The manuals list Modbus read registers to extract Data from the Selec Meters.
 
 The Repo also contains Node-red flows to read all the modbus registers over serial and extract useful values and send it out via mqtt or other means on nodered. Node-red-Contrib-Modbus Package needs to be pre installed on Nodered to get this working. There are other ways to do the same using python programs or even use a esp microcontroller or arduino to extra data from Modbus devices but i have a PI sitting near the meters and doing varions other stuff including acting as a wifi access point, so using Nodered on a PI was super easy for me also considering my limited programming skills. 
 
-Requirements:  
+**Requirements:  **  
+
 Raspberry PI 3B with local installation of Node-Red.  
 node-red-contrib-modbus Package   
 Rs485 to USD adapter  
